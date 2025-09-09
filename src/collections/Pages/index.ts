@@ -16,6 +16,8 @@ import SigCustomBlock from '../../blocks/SigCustomBlock/config'
 import HeroBanner from '../../blocks/HeroBanner/config'
 import HomeAbout from '../../blocks/HomeAbout/config'
 import HomeStatistics from '../../blocks/HomeStatistics/config'
+import BlogGrid from '../../blocks/BlogGrid/config'
+import EventGrid from '../../blocks/EventGrid/config'
 
 import {
   MetaDescriptionField,
@@ -90,6 +92,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 HeroBanner,
                 HomeAbout,
                 HomeStatistics,
+                BlogGrid,
+                EventGrid,
               ],
               required: true,
               admin: {

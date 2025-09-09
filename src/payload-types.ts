@@ -74,6 +74,7 @@ export interface Config {
     users: User;
     blog: Blog;
     testimonials: Testimonial;
+    events: Event;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -92,6 +93,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     blog: BlogSelect<false> | BlogSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -217,6 +219,24 @@ export interface Page {
         id?: string | null;
         blockName?: string | null;
         blockType: 'HomeStatistics';
+      }
+    | {
+        heading?: string | null;
+        collection?: string | null;
+        limit?: number | null;
+        orderby: 'asc' | 'desc';
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'BlogGrid';
+      }
+    | {
+        heading?: string | null;
+        collection?: string | null;
+        limit?: number | null;
+        orderby: 'asc' | 'desc';
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'EventGrid';
       }
   )[];
   meta?: {
@@ -771,6 +791,7 @@ export interface Form {
 export interface Blog {
   id: string;
   title: string;
+  slug: string;
   thumbnail: string | Media;
   date: string;
   content: {
@@ -801,6 +822,36 @@ export interface Blog {
 export interface Testimonial {
   id: string;
   username: string;
+  thumbnail: string | Media;
+  date: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Blogs
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: string;
+  title: string;
+  slug: string;
   thumbnail: string | Media;
   date: string;
   content: {
@@ -1023,6 +1074,10 @@ export interface PayloadLockedDocument {
         value: string | Testimonial;
       } | null)
     | ({
+        relationTo: 'events';
+        value: string | Event;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: string | Redirect;
       } | null)
@@ -1150,6 +1205,26 @@ export interface PagesSelect<T extends boolean = true> {
               normalDeliveriesImg?: T;
               obstetricSurgeries?: T;
               obstetricSurgeriesImg?: T;
+              id?: T;
+              blockName?: T;
+            };
+        BlogGrid?:
+          | T
+          | {
+              heading?: T;
+              collection?: T;
+              limit?: T;
+              orderby?: T;
+              id?: T;
+              blockName?: T;
+            };
+        EventGrid?:
+          | T
+          | {
+              heading?: T;
+              collection?: T;
+              limit?: T;
+              orderby?: T;
               id?: T;
               blockName?: T;
             };
@@ -1426,6 +1501,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface BlogSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   thumbnail?: T;
   date?: T;
   content?: T;
@@ -1439,6 +1515,19 @@ export interface BlogSelect<T extends boolean = true> {
  */
 export interface TestimonialsSelect<T extends boolean = true> {
   username?: T;
+  thumbnail?: T;
+  date?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
   thumbnail?: T;
   date?: T;
   content?: T;

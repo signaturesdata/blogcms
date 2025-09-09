@@ -16,6 +16,7 @@ const Blog: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     description: 'Blogs',
+    group: 'Bethel Hospital',
   },
   access: {
     read: () => true, // public can read
@@ -23,6 +24,11 @@ const Blog: CollectionConfig = {
   fields: [
     {
       name: 'title',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'slug',
       type: 'text',
       required: true,
     },

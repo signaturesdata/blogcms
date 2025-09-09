@@ -11,11 +11,11 @@ import { Banner } from '../blocks/Banner/config'
 import { Code } from '../blocks/Code/config'
 import { MediaBlock } from '../blocks/MediaBlock/config'
 
-const Testimonials: CollectionConfig = {
-  slug: 'testimonials', // this becomes /api/home
+const Events: CollectionConfig = {
+  slug: 'events', // this becomes /api/home
   admin: {
-    useAsTitle: 'username',
-    description: 'Testimonials',
+    useAsTitle: 'title',
+    description: 'Blogs',
     group: 'Bethel Hospital',
   },
   access: {
@@ -23,7 +23,12 @@ const Testimonials: CollectionConfig = {
   },
   fields: [
     {
-      name: 'username',
+      name: 'title',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'slug',
       type: 'text',
       required: true,
     },
@@ -56,7 +61,11 @@ const Testimonials: CollectionConfig = {
       required: true,
     },
   ],
+  // Important: only one document allowed
   versions: false,
+  // admin: {
+  //   disableDuplicate: true,
+  // },
 }
 
-export default Testimonials
+export default Events

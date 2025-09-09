@@ -7,6 +7,7 @@ import type { MediaBlock as MediaBlockProps } from '@/payload-types'
 import { Media } from '../../components/Media'
 import Link from 'next/link'
 import './HeroBanner.css'
+import './InnerBanner.css'
 
 type Props = MediaBlockProps & {
   breakout?: boolean
@@ -74,13 +75,31 @@ export const HeroBanner: React.FC<Props> = (props) => {
       ) : (
         //Inner banner
         <section>
-          {(media || staticImage) && (
-            <Media
-              imgClassName={cn('border border-border rounded-[0.8rem]', imgClassName)}
-              resource={media}
-              src={staticImage}
-            />
-          )}
+          <div className="inner-banner">
+            <div className="banner-image-wrapper">
+              {(media || staticImage) && (
+                <Media
+                  imgClassName={cn('banner-img desktop-banner', imgClassName)}
+                  resource={media}
+                  src={staticImage}
+                />
+              )}
+            </div>
+            <div className="inner-banner-cont custom-container">
+              <h1>{heading}</h1>
+              {subheading && <p>{subheading}</p>}
+              <div className="common-btn">
+                {buttons.map((col, index) => {
+                  const { btnLabel, btnLink, btnClass } = col
+                  return (
+                    <Link href={btnLink} passHref key={index}>
+                      <button className={cn('home-explore-btn', btnClass)}>{btnLabel}</button>
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
         </section>
       )}
     </>
