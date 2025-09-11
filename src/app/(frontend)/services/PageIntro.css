@@ -1,0 +1,191 @@
+.pageintroSecBg {
+    background: #1C1D24;
+    color: #e9e9e9;
+    position: relative;
+    padding: 5rem 0 10rem 0;
+}
+
+.pageintroSecBg {
+    background: radial-gradient(50% 50% at 50% 50%, #1F4E70 0%, #022640 100%);
+}
+
+.pageintroH2,
+.pageintroDesc {
+    justify-content: center;
+    display: flex;
+    text-align: center;
+}
+
+.pageintroH2 h2 {
+    font-weight: 300;
+    z-index: 1;
+    font-size: 60px;
+}
+
+.pageintroDesc {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.pageintroDesc {
+    margin: 0 auto;
+    color: #fff;
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.pageintroDesc p {
+    font-weight: 200;
+    font-size: 30px;
+    z-index: 1;
+}
+
+.pageintroH2 {
+    margin: 4rem 0;
+}
+
+.pageintroDesc {
+    width: 60%;
+}
+
+@media (max-width: 1800px) {
+    .pageintroH2 {
+        margin: 4rem 0;
+    }
+
+}
+
+@media (max-width: 1637px) {
+
+    .pageintroDesc {
+        width: 75%;
+    }
+}
+
+@media(max-width:1600px) {
+    .pageintroH2 h2 {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 1536px) {
+
+    .pageintroDesc {
+        width: 82%;
+    }
+
+    .pageintroDesc p {
+        font-size: 25px;
+    }
+}
+
+@media(max-width:1440px) {
+    .pageintroH2 h2 {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 1366px) {
+    .pageintroH2 {
+        margin: 0rem 0 3rem 0;
+    }
+
+    .pageintroH2 h2 {
+        font-size: 36px;
+    }
+
+    .pageintroDesc {
+        width: 87%;
+    }
+
+    .pageintroDesc p {
+        font-size: 23px;
+    }
+}
+
+@media(max-width:1280px) {
+    .pageintroH2 h2 {
+        font-size: 32px;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1220px) {
+
+    .pageintroDesc {
+        width: 87%;
+    }
+
+    .pageintroDesc p {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 1200px) {
+
+    .pageintroDesc {
+        width: 82%;
+    }
+
+    .pageintroDesc p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .pageintroH2 h2 {
+        font-size: 30px;
+    }
+
+    .pageintroDesc {
+        width: 73%;
+    }
+
+    .pageintroDesc p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 800px) {
+    .pageintroDesc {
+        width: 73%;
+    }
+
+    .pageintroDesc p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .pageintroDesc {
+        width: 100%;
+        margin: auto;
+    }
+
+    .pageintroSecBg {
+        padding: 3rem 0;
+    }
+
+    .pageintroH2 h2 {
+        font-size: 28px;
+    }
+
+    .pageintroDesc p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 560px) {
+
+    .pageintroH2 h2 {
+        font-size: 24px;
+    }
+}
+
+@media(max-width:450px) {
+    .pageintroH2 h2 {
+        font-size: 28px;
+    }
+}

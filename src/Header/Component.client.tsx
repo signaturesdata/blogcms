@@ -52,8 +52,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             <div className="header-right">
               <div className="header-list desktop-only">
                 <Link href="/services">Services</Link>
-                <Link href="/facilities">Facilities</Link>
-                <Link href="/admission">Admission</Link>
+                <Link href="/about">About Us</Link>
+                <Link href="/contact">Contact</Link>
               </div>
             </div>
           </div>

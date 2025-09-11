@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import { Media } from '@/components/Media'
 import './Services.css'
+import './PageIntro.css'
+import './InnerBanner.css'
 
 type Args = {
   params: Promise<{
@@ -31,7 +32,7 @@ const servicesData = [
   {
     title: 'Ozone & Hydrogen Therapy',
     description: 'Reduce Inflammation. Promote Healing.',
-    image: '/services/img-ozone-and-hydrogen-therapy.jpg',
+    image: '/services/img-Physiotherapy.jpg',
     alt: 'Obstetrics Gynaecology img',
     items: [
       'General Medicine',
@@ -74,10 +75,32 @@ const servicesData = [
 ]
 
 export default async function Page({ params: paramsPromise }: Args) {
-  const { slug = '' } = await paramsPromise
+  //const { slug = '' } = await paramsPromise
 
   return (
     <>
+      <InnerBanner
+        title="From Fractures to Families: Expert Ortho, Maternal & Women's Health, and Plastic Surgery"
+        description="From fractures and joint pain to childbirth and reconstructive surgery, our specialists walk 
+                with you every step. Orthopaedics, trauma, obstetrics & gynaecology, and plastic surgery-expert care under one compassionate roof."
+        desktopImage="/services/banner-services.jpg"
+        faq=""
+        links={[{ type: 'appointment', label: 'Book an Appointment', href: '/services' }]}
+      />
+
+      <PageIntro
+        title="Introductory Overview"
+        description={
+          <>
+            At <strong>Bethel Hospital</strong>, we believe that expert care is not just about
+            treating a condition - it is about restoring comfort, confidence, and quality of life.
+            For over two decades, we have combined advanced orthopaedic treatments with a deeply
+            human approach to healing. At Bethel, your healing is personal - and our commitment is
+            lifelong.
+          </>
+        }
+      />
+
       {servicesData.map((service, index) => (
         <section
           key={index}
@@ -145,6 +168,70 @@ const ServiceContent: React.FC<Props> = ({ title, description, items, link, faq 
           Explore
         </Link>
       )}
+    </div>
+  )
+}
+
+type Intro = {
+  title: string
+  description: React.ReactNode
+}
+const PageIntro: React.FC<Intro> = ({ title, description }) => {
+  return (
+    <div className="pageintroSecBg">
+      <div className="custom-container">
+        <div className="pageintroH2">
+          <h2>{title}</h2>
+        </div>
+        <div className="pageintroDesc">
+          <p>{description}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+type LinkItem = {
+  type: string
+  href: string
+  label: string
+}
+type Banner = {
+  title: string
+  description: string
+  links: LinkItem[]
+  faq: string
+  desktopImage: string
+}
+const InnerBanner: React.FC<Banner> = ({ title, description, links, faq, desktopImage }) => {
+  return (
+    <div className="inner-banner">
+      <div className="banner-image-wrapper">
+        <img src={desktopImage} alt="Desktop Banner" className="banner-img desktop-banner" />
+      </div>
+
+      <div className="inner-banner-cont custom-container">
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <div className="common-btn">
+          {links.map((link, index) =>
+            link.type === 'appointment' ? (
+              <Link href={link.href} key={index} className="appointment-btn">
+                {link.label}
+              </Link>
+            ) : (
+              <Link href={link.href} key={index} className="appointment-btn">
+                {link.label}
+              </Link>
+            ),
+          )}
+          {faq && (
+            <a href={faq} className="appointment-btn">
+              FAQ
+            </a>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
